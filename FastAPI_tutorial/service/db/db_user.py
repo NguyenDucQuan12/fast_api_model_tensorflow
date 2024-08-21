@@ -76,6 +76,26 @@ def get_user(db: Session, id: int):
         )
     
     return user
+def get_user_by_username(db: Session, username: str):
+    """
+    Lấy ra thông tin của người dùng theo id được cung cấp
+    - **id**: id của người dùng
+    Trả về thông tin người dùng
+    - **username**: tên người dùng
+    - **email**: thư điện tử
+    Xử lý ngoại lệ nếu không tìm thấy người dùng có id đã cung cấp
+    """
+    user = db.query(DBUser).filter(DBUser.username == username).first()
+    # user = db.query(DBUser).filter(DBUser.id == id).filter(DBUser.email == email).first()
+
+    if not user:
+        # Ném ra HTTPException nếu không tìm thấy người dùng với id tương ứng
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Người dùng không tồn tại"
+        )
+    
+    return user
 
 def update_user(db: Session, id: int, request: schemas.UserBase):
     """

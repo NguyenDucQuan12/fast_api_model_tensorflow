@@ -4,6 +4,7 @@ from fastapi import APIRouter, Depends
 from service.schemas import UserBase, UserDisplay
 from service.db.database import get_db
 from sqlalchemy.orm import Session
+from service.auth.oauth2 import oauth2_scheme, get_current_user
 
 
 router = APIRouter(
@@ -23,7 +24,7 @@ def create_user(request: UserBase, db: Session = Depends(get_db)):
 
 # Read All User
 @router.get("/", response_model=List[UserDisplay])
-def get_all_user(db: Session = Depends(get_db)):
+def get_all_user(db: Session = Depends(get_db), current_user: UserBase = Depends(get_current_user)):
     """
     Tạo phương thức truy xuất thông tin người dùng và trả về thông tin theo định dạng danh sách UserDisplay
     """
@@ -31,7 +32,7 @@ def get_all_user(db: Session = Depends(get_db)):
 
 # Read user by id
 @router.get("/{id}", response_model= UserDisplay)
-def get_user(id: int, db: Session = Depends(get_db)):
+def get_user(id: int, db: Session = Depends(get_db), current_user: UserBase = Depends(get_current_user)):
     """
     Tạo phương thức truy xuất thông tin một người dùng có id và trả về thông tin theo định dạng UserDisplay
     """
@@ -39,7 +40,7 @@ def get_user(id: int, db: Session = Depends(get_db)):
 
 # Update User
 @router.put("/{id}/update")
-def update_user(id: int, request: UserBase, db: Session = Depends(get_db)):
+def update_user(id: int, request: UserBase, db: Session = Depends(get_db), current_user: UserBase = Depends(get_current_user)):
     """
     Tạo phương thức cập nhật thông tin một người dùng có id được cung cấp
     """
@@ -47,7 +48,7 @@ def update_user(id: int, request: UserBase, db: Session = Depends(get_db)):
 
 # Delete User
 @router.delete("/{id}/delete")
-def delete_user(id: int, db: Session = Depends(get_db)):
+def delete_user(id: int, db: Session = Depends(get_db), current_user: UserBase = Depends(get_current_user)):
     """
     Tạo phương thức xóa thông tin một người dùng có id được cung cấp
     """

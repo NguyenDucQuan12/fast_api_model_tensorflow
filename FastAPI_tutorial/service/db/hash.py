@@ -26,7 +26,8 @@ class Hash():
     # Hash a password using bcrypt
     def bcrypt(password):
         """
-        Mã hóa mật khẩu
+        Mã hóa mật khẩu  
+        Chuyển đổi dạng str sang byte để xử lý
         """
         pwd_bytes = password.encode('utf-8')
         salt = bcrypt.gensalt()
@@ -36,7 +37,9 @@ class Hash():
     # Check if the provided password matches the stored password (hashed)
     def verify(plain_password, hashed_password):
         """
-        Kiểm tra mật khẩu có trùng với mật khẩu đã mã hóa hay không
+        Kiểm tra mật khẩu có trùng với mật khẩu đã mã hóa hay không  
+        Chuyển đổi dạng str sang byte để xử lý
         """
         password_byte_enc = plain_password.encode('utf-8')
-        return bcrypt.checkpw(password = password_byte_enc , hashed_password = hashed_password)
+        hashed_password_bytes = hashed_password.encode('utf-8')
+        return bcrypt.checkpw(password = password_byte_enc , hashed_password = hashed_password_bytes)

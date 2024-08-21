@@ -13,16 +13,20 @@ class BlogModel(BaseModel):
     content : str
     published : Optional[bool]
 
+def required_functionality():
+    return {
+        "message":"Learning FastAPI is important"
+    }
 
-@router.post("/new/{id}")
-def create_blog(blog: BlogModel, id: int, version: int = 1):
+@router.post("/create/blog/{id}")
+def create_new_blog(blog: BlogModel, id: int, version: int = 1):
     return {
         "id": id,
         "data" : blog,
         "version": version
         }
 
-@router.post("/new/{id}/comment")
+@router.post("/create/comment/{id}")
 def create_comment(blog: BlogModel, id: int, comment: int = Query(None, title= "ID of comment", description= "Some description for comment id")):
     return {
         "id": id,
@@ -30,7 +34,3 @@ def create_comment(blog: BlogModel, id: int, comment: int = Query(None, title= "
         "comment_id": comment
         }
 
-def required_functionality():
-    return {
-        "message":"Learning FastAPI is important"
-    }
