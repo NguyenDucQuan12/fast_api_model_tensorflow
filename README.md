@@ -9,3 +9,5 @@ Hai trang web kiểm tra API
 Serving at: http://127.0.0.1:8000  
 API docs: http://127.0.0.1:8000/docs     
 ```
+Để chạy API trong môi trường thật thì sử dụng câu lệnh `fastapi run .FastAPI\service\main.py`  
+Vào máy khác và nhập đường link để thử API bằng cách `http://IP:8000/endpoint`  
