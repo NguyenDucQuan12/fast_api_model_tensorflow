@@ -23,7 +23,7 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
     """
     Tạo token với tiêu chuẩn JWT (RFC 7591)  
     - **data: dict**: Là dữ liệu mà bạn muốn mã hóa và lưu trữ trong JWT. 
-    Nó thường chứa thông tin về người dùng như user_id, username, hoặc bất kỳ dữ liệu nào khác mà bạn muốn bao gồm trong token.  
+    Nó thường chứa thông tin về người dùng như `user_id`, `username`, hoặc bất kỳ dữ liệu nào khác mà bạn muốn bao gồm trong token.  
     - **expires_delta**: Thời gian hết hạn của token, mặc định là 15 phút
     """
     # Tạo một bản sao data để thao tác, ko ảnh hưởng đến data gốc
@@ -39,6 +39,11 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
     return encoded_jwt
 
 def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(get_db)):
+
+    """
+    Lấy thông tin người dùng hiện tại dựa vào `token`  
+    - `payload = jwt.decode(token, SECRET_KEY, algorithms= [ALGORITHM])` sẽ giải mã token dựa vào khóa bí mật và thuật toán đã sử dụng
+    """
     credentials_exception = HTTPException(
         status_code= status.HTTP_401_UNAUTHORIZED,
         detail= "Could not validat credentials",

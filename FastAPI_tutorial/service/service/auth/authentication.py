@@ -13,6 +13,29 @@ router = APIRouter(
 # Địa chỉ này phải đúng với tokenURL trong: oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 @router.post("/token")
 def get_token(request: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
+    """
+    Tạo ra một token có thời gian tồn tại để có thể truy vấn đến các API được khóa  
+    - **request** sẽ là dữ liệu theo dạng biểu mẫu của `OAuth2PasswordRequestForm` gồm `username` và `password`  
+    Để sử dụng  hàm này ta cần cung cấp `username` và `password` đã được đăng ký trong CSDL  
+    ### Ví dụ
+
+    ```python
+    import requests
+
+    url_get_token = "http://172.31.99.42:8000/token"
+    data = {
+        "username": "linh",
+        "password": "123456789"
+    }
+    response = requests.post(url=url_get_token, data= data)
+    token = response.json().get("access_token")
+
+    print(token)
+    
+    ```
+
+    [FastAPI docs for Simple OAuth2 with Password and Bearer](https://fastapi.tiangolo.com/tutorial/security/simple-oauth2/)
+    """
     user = db.query(DBUser).filter(DBUser.username == request.username).first()
     if not user:
         raise HTTPException(

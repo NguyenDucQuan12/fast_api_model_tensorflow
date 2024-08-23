@@ -40,9 +40,9 @@ def get_upload_file(file: UploadFile = File(...)):
     }
 
 @router.get("/download/{name}", response_class= FileResponse )
-def get_file(name: str):
+def download_file_from_browser(name: str):
     """
-    API cho phép người dùng tải xuống tệp tin từ server  
+    API tự động tải xuống tệp tin từ server bằng trình duyệt khi dán `endpoint` vào trình duyệt  
     Yêu cầu trạng thái phản hồi là **response_class= FileResponse**  
     - **name**: là tệp tin mà người dùng muốn tải, nó yêu cầu cả đuôi như cat.png, requirements.txt
     """
@@ -65,7 +65,27 @@ def get_file(name: str):
     API cho phép người dùng tải xuống tệp tin từ server  
     Yêu cầu trạng thái phản hồi là **response_class= FileResponse**  
     - **name**: là tệp tin mà người dùng muốn tải, nó yêu cầu cả đuôi như cat.png, requirements.txt
+    ## Ví dụ
+    ```python
+    import requests
+
+    # URL của API mà bạn muốn tải xuống tệp
+    url_view_file = "http://localhost:8000/file/view/cat.png"
+
+    # Gửi yêu cầu GET để tải xuống tệp
+    response = requests.get(url_view_file)
+
+    # Kiểm tra nếu yêu cầu thành công
+    if response.status_code == 200:
+        # Lưu tệp vào đĩa
+        with open("downloaded_cat.png", "wb") as file:
+            file.write(response.content)
+        print("File downloaded successfully.")
+    else:
+        print(f"Failed to download file. Status code: {response.status_code}")
+    ```
     """
+
     path = f"files/{name}"
 
     # Kiểm tra xem tệp có tồn tại không

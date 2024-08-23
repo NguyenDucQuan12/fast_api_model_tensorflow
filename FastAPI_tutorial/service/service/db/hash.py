@@ -20,8 +20,8 @@ import bcrypt  # pip install bcrypt
 class Hash():
 
     """
-    Mã hóa mật khẩu người dùng
-    Kiểm tra mật khẩu được cung cấp có trùng với mật khẩu đã mã hóa hay không
+    - **bcrypt**: Mã hóa mật khẩu người dùng
+    - **verify**: Kiểm tra mật khẩu được cung cấp có trùng với mật khẩu đã mã hóa hay không
     """
     # Hash a password using bcrypt
     def bcrypt(password):
