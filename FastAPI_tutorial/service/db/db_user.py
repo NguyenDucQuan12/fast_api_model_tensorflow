@@ -76,6 +76,7 @@ def get_user(db: Session, id: int):
         )
     
     return user
+
 def get_user_by_username(db: Session, username: str):
     """
     Lấy ra thông tin của người dùng theo id được cung cấp

@@ -1,0 +1,28 @@
+24/08/2024 08:41:30 AM DEBUG:	 main.py: _log_changes()-Line: 294	 id_thread: 9272-thread_name: MainThread	 message: 1 change detected: {(<Change.modified: 2>, 'D:\\Venv_Python\\.FastAPI\\service\\log')}
+24/08/2024 09:05:37 AM DEBUG:	 multipart.py: callback()-Line: 626	 id_thread: 15932-thread_name: MainThread	 message: Calling on_field_start with no data
+24/08/2024 09:05:37 AM DEBUG:	 multipart.py: callback()-Line: 623	 id_thread: 15932-thread_name: MainThread	 message: Calling on_field_name with data[0:10]
+24/08/2024 09:05:37 AM DEBUG:	 multipart.py: callback()-Line: 623	 id_thread: 15932-thread_name: MainThread	 message: Calling on_field_data with data[11:19]
+24/08/2024 09:05:37 AM DEBUG:	 multipart.py: callback()-Line: 626	 id_thread: 15932-thread_name: MainThread	 message: Calling on_field_end with no data
+24/08/2024 09:05:37 AM DEBUG:	 multipart.py: callback()-Line: 626	 id_thread: 15932-thread_name: MainThread	 message: Calling on_field_start with no data
+24/08/2024 09:05:37 AM DEBUG:	 multipart.py: callback()-Line: 623	 id_thread: 15932-thread_name: MainThread	 message: Calling on_field_name with data[20:28]
+24/08/2024 09:05:37 AM DEBUG:	 multipart.py: callback()-Line: 623	 id_thread: 15932-thread_name: MainThread	 message: Calling on_field_data with data[29:33]
+24/08/2024 09:05:37 AM DEBUG:	 multipart.py: callback()-Line: 626	 id_thread: 15932-thread_name: MainThread	 message: Calling on_field_end with no data
+24/08/2024 09:05:37 AM DEBUG:	 multipart.py: callback()-Line: 626	 id_thread: 15932-thread_name: MainThread	 message: Calling on_field_start with no data
+24/08/2024 09:05:37 AM DEBUG:	 multipart.py: callback()-Line: 623	 id_thread: 15932-thread_name: MainThread	 message: Calling on_field_name with data[34:42]
+24/08/2024 09:05:37 AM DEBUG:	 multipart.py: callback()-Line: 623	 id_thread: 15932-thread_name: MainThread	 message: Calling on_field_data with data[43:52]
+24/08/2024 09:05:37 AM DEBUG:	 multipart.py: callback()-Line: 626	 id_thread: 15932-thread_name: MainThread	 message: Calling on_field_end with no data
+24/08/2024 09:05:37 AM DEBUG:	 multipart.py: callback()-Line: 626	 id_thread: 15932-thread_name: MainThread	 message: Calling on_field_start with no data
+24/08/2024 09:05:37 AM DEBUG:	 multipart.py: callback()-Line: 623	 id_thread: 15932-thread_name: MainThread	 message: Calling on_field_name with data[53:58]
+24/08/2024 09:05:37 AM DEBUG:	 multipart.py: callback()-Line: 626	 id_thread: 15932-thread_name: MainThread	 message: Calling on_field_end with no data
+24/08/2024 09:05:37 AM DEBUG:	 multipart.py: callback()-Line: 626	 id_thread: 15932-thread_name: MainThread	 message: Calling on_field_start with no data
+24/08/2024 09:05:37 AM DEBUG:	 multipart.py: callback()-Line: 623	 id_thread: 15932-thread_name: MainThread	 message: Calling on_field_name with data[60:69]
+24/08/2024 09:05:37 AM DEBUG:	 multipart.py: callback()-Line: 623	 id_thread: 15932-thread_name: MainThread	 message: Calling on_field_data with data[70:76]
+24/08/2024 09:05:37 AM DEBUG:	 multipart.py: callback()-Line: 626	 id_thread: 15932-thread_name: MainThread	 message: Calling on_field_end with no data
+24/08/2024 09:05:37 AM DEBUG:	 multipart.py: callback()-Line: 626	 id_thread: 15932-thread_name: MainThread	 message: Calling on_field_start with no data
+24/08/2024 09:05:37 AM DEBUG:	 multipart.py: callback()-Line: 623	 id_thread: 15932-thread_name: MainThread	 message: Calling on_field_name with data[77:90]
+24/08/2024 09:05:37 AM DEBUG:	 multipart.py: callback()-Line: 623	 id_thread: 15932-thread_name: MainThread	 message: Calling on_field_data with data[91:97]
+24/08/2024 09:05:37 AM DEBUG:	 multipart.py: callback()-Line: 626	 id_thread: 15932-thread_name: MainThread	 message: Calling on_field_end with no data
+24/08/2024 09:05:37 AM DEBUG:	 multipart.py: callback()-Line: 626	 id_thread: 15932-thread_name: MainThread	 message: Calling on_end with no data
+24/08/2024 09:19:27 AM DEBUG:	 main.py: _log_changes()-Line: 294	 id_thread: 9272-thread_name: MainThread	 message: 1 change detected: {(<Change.modified: 2>, 'D:\\Venv_Python\\.FastAPI\\service\\router\\dependencies.py')}
+24/08/2024 09:19:27 AM DEBUG:	 main.py: _log_changes()-Line: 294	 id_thread: 9272-thread_name: MainThread	 message: 1 change detected: {(<Change.modified: 2>, 'D:\\Venv_Python\\.FastAPI\\service\\log\\24-08-24\\log.txt')}
+24/08/2024 09:19:29 AM DEBUG:	 main.py: _log_changes()-Line: 294	 id_thread: 9272-thread_name: MainThread	 message: 5 changes detected: {(<Change.deleted: 3>, 'D:\\Venv_Python\\.FastAPI\\service\\router\\__pycache__\\dependencies.cpython-311.pyc.2028444831792'), (<Change.added: 1>, 'D:\\Venv_Python\\.FastAPI\\service\\router\\__pycache__\\dependencies.cpython-311.pyc'), (<Change.added: 1>, 'D:\\Venv_Python\\.FastAPI\\service\\router\\__pycache__\\dependencies.cpython-311.pyc.2028444831792'), (<Change.modified: 2>, 'D:\\Venv_Python\\.FastAPI\\service\\router\\__pycache__'), (<Change.deleted: 3>, 'D:\\Venv_Python\\.FastAPI\\service\\router\\__pycache__\\dependencies.cpython-311.pyc')}

@@ -19,7 +19,7 @@ Tạo các router xử lý với bảng Article trong CSDL
 
 # create Article
 @router.post("/", response_model= ArticleDisplay)
-def create_article(request: ArticleBase, db: Session = Depends(get_db)):
+def create_article(request: ArticleBase, db: Session = Depends(get_db), current_user: UserBase = Depends(get_current_user)):
     return db_article.create_article(db= db, request= request)
 
 # Get specific article

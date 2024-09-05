@@ -3,6 +3,7 @@ from typing import Optional, List
 from fastapi.responses import Response
 from fastapi.responses import HTMLResponse
 from fastapi.responses import PlainTextResponse
+import time
 
 
 router = APIRouter(
@@ -12,12 +13,26 @@ router = APIRouter(
 
 products = ["watch", "camera", "phone"]
 
+async def time_consuming_functionality():
+    """
+    Mô phỏng một chức năng tiêu tốn thời gian bằng cách tạm dừng 5 giây   
+    Để 1 hàm có thể sử dụng được 2 chức năng này thì phải đánh dấu nó là **async** trước lúc khởi tạo hàm  
+    ví dụ: `async def time_consuming_functionality()`  
+    """
+    time.sleep(5)
+    return "Done 5s"
+
 @router.get("/")
-def get_all_product():
+async def get_all_product():
     """
-    Lưu cookie
+    Lấy tất cả giá trị trong products và lưu cookie  
+    Việc có thêm hàm `time_consuming_functionality` sẽ làm cho API này phải đợi 5s trước khi thực hiện các chức năng bên dưới nó  
+    Khi đánh dấu là `await` (hàm được đánh dấu phải được khai báo là **`async`**) thì khi gọi đến API `get_all_product` 
+    sẽ tạm dừng tại hàm `await` cho đến khi hàm này chạy xong thì các câu lệnh bên dưới nó mới tiếp tục   
+    Tuy nhiên nó sẽ không chặn toàn bộ chương trình, trong lúc đang đợi cho hàm `await` hoàn thành thì vẫn có thể thực hiện các API khác, hoặc nhận các lệnh API gọi đến 
+    hàm `get_all_product` thêm lần nữa
     """
-    # return products
+    await time_consuming_functionality()
     data = " ".join(products) # chuyển đổi thành dạng văn bản  và phản hổi với người dùng bằng Response
     response = Response(content= data, media_type= "text/plain")
     response.set_cookie(key= "test_cookie", value= "cookie_value")
@@ -27,8 +42,8 @@ def get_all_product():
 def get_cookie(test_cookie : Optional[str] = Cookie(None)):
     """
     Lấy cookie  
-    Lưu ý tên biến phải trùng với **key** cookie đã lưu  
-    ví dụ **key = "test_cookie"** thì tên biến cũng phải là **test_cookie**
+    Lưu ý tên biến phải trùng với **`key`** cookie đã lưu  
+    ví dụ **`key = "test_cookie"`** thì tên biến cũng phải là **`test_cookie`**
     """
     cookie = test_cookie
     return {

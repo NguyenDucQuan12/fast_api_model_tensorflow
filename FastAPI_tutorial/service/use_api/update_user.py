@@ -1,11 +1,11 @@
 import requests
 
-url = "http://172.31.99.42:8000/token"
+url_get_token = "http://172.31.99.42:8000/token"
 data = {
     "username": "linh",
     "password": "123456789"
 }
-response = requests.post(url=url, data= data)
+response = requests.post(url=url_get_token, data= data)
 token = response.json().get("access_token")
 
 print(token)

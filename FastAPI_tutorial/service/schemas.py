@@ -33,7 +33,7 @@ class UserBase(BaseModel):
 
 class UserDisplay(BaseModel):
     """
-    Trả về thông tin người dùng theo ý muốn, không trả về những thông tin quan trọng như password đã hash
+    Trả về thông tin người dùng theo ý muốn, không trả về những thông tin quan trọng như password đã hash  
     Lưu ý tên của các trường thông tin trả về phải giống nhau, nếu không gặp lỗi
     - **username**: tên người dùng
     - **email**: địa chỉ mail của người dùng
@@ -78,3 +78,8 @@ class ArticleDisplay(BaseModel):
     user: User
     class Config():
         from_attributes  = True
+
+class ProductBase(BaseModel):
+    title: str
+    description: str
+    price: float
