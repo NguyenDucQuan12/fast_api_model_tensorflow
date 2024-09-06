@@ -5,6 +5,10 @@ from router.schemas import UserBase
 from db.models import DbUser
 from db.hash import Hash
 
+"""
+Các câu lệnh truy vấn tới CSDL User
+"""
+
 def create_user(db: Session, request: UserBase):
 
     """
@@ -32,3 +36,17 @@ def create_user(db: Session, request: UserBase):
             detail="Lỗi khi thêm người dùng mới"
         )
     return new_user 
+
+def get_user_by_username(db: Session, username: str):
+    """
+    Truy vấn thông tin người dùng với `username` được cung cấp  
+    
+    """
+    user = db.query(DbUser).filter(DbUser.username == username).first()
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Không tìm thấy người dùng {username}"
+        )
+    
+    return user

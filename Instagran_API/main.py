@@ -1,10 +1,14 @@
 from fastapi import FastAPI # pip install "fastapi[standard]"
 import uvicorn
+from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse, HTMLResponse
+from fastapi.middleware.cors import CORSMiddleware
 from db import models
 from db.database import engine
 from router import user
 from router import post
+from router import comment
+from auth import authentication
 
 
 app = FastAPI()
@@ -12,6 +16,8 @@ app = FastAPI()
 # Thêm các router
 app.include_router(user.router)
 app.include_router(post.router)
+app.include_router(authentication.router)
+app.include_router(comment.router)
 
 
 # Serve the favicon
@@ -27,7 +33,22 @@ def root():
 # Tạo CSDL
 models.Base.metadata.create_all(engine)
 
+# Truy cập các tài nguyên trong thư mục `files/images` bằng địa chỉ http://127.0.0.1:8000/files/images/tenfile.đuôi
+app.mount("/files/images", StaticFiles(directory = "files/images"), name= "images")
 
+
+# Cho phép các máy chủ, API khác chạy trên cùng 1 máy tính truy cập tài nguyên vào API này
+origins = [
+    "http://localhost:3000"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins = origins,
+    allow_credentials = True,
+    allow_methods = ["*"],
+    allow_headers = ["*"]
+)
 
 if __name__ == "__main__":
     # Chạy file này bằng cách `python main.py`
